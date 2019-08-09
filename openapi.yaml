@@ -1,0 +1,338 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: http://10.151.34.49:8462/ARLIServices.svc
+paths:
+  /GetChequeStatusNewITerm:
+    post:
+      summary: First Page Of Iterm.
+      description: Optional extended description in CommonMark or HTML.
+      requestBody:
+        required: true
+        content:
+         application/json:
+            schema:
+              type: object
+              properties:
+                QuoteId:
+                  type: string
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  status: 
+                    type: boolean
+                  response:
+                    type: object
+                    
+  /AddUpdateKnowYourPremium:
+    post:
+      summary: Adds and update Know Your Premium page
+      description: This adds or update info on KYP
+      requestBody:
+        required: true
+        content:
+         application/json:
+            schema:
+              type: object
+              properties:
+                obj:
+                  type: object
+                  properties:
+                    LeadBenefits:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          LeadId:
+                            type: integer
+                            format: int64
+                            example: '10578366'
+                          AdditionalBenifits:
+                            type: string
+                            example: Death Benefit
+                          SumAssured:
+                            type: number
+                            format: double
+                            example: '30000000.0'
+                          Premium:
+                            type: number
+                            format: double
+                            example: '3881.070000000'
+                          Service_TaxRs:
+                            type: number
+                            format: double
+                            example: '698.5926'
+                          Education_TaxRs:
+                            type: number
+                            format: double
+                            example: '0.0'
+                          Minimum_trem:
+                            type: integer
+                            example: '0'
+                          Minimum_sumAssured:
+                            type: number
+                            format: double
+                            example: '0.0'
+                          RIDER_AGE:
+                            type: integer
+                            example: '0'
+                          RIDER_MATURITY_AGE:
+                            type: integer
+                            example: '0'
+                          RIDER_MIN_AGE:
+                            type: integer
+                            example: '0'
+                          AnnualizedPremium:
+                            type: string
+                            example: NULL
+                    KnowPremium: 
+                      type: object
+                      properties:
+                        LeadId:
+                          type: integer
+                          format: int64
+                          example: '10578366'
+                          description: LeadId of holder
+                        PolicyTerm:
+                          type: integer
+                          example: '40'
+                          description: policy lasts upto those years
+                        PremiumType:
+                          type: string
+                          example: monthly
+                          description: describes type of premium-annual or monthly
+                        LifeCover:
+                          type: number
+                          format: double
+                          example: '30000000.0'
+                          description: Total amount invested
+                        TotalPremium:
+                          type: number
+                          format: double
+                          example: '4822.0'
+                          description: Total return
+                        Monthly_Income_Applied:
+                          type: number
+                          format: double
+                          example: '0.0'
+                        Base_Premium:
+                          type: number
+                          format: double
+                          example: '4086.47700000000'
+                        Benefit_Option:
+                          type: string
+                          example: L
+                        Premium_Paying_Term:
+                          type: integer
+                          example: '70'
+                        FundAllocation_SecureFund:
+                          type: integer
+                          example: '0'
+                        FundAllocation_DebtFund:
+                          type: integer
+                          example: '0'
+                        FundAllocation_BlueChipFund:
+                          type: integer
+                          example: '0'
+                        Fund_Value_4:
+                          type: string
+                          example: null
+                        Fund_Value_8:
+                          type: string
+                          example: null
+                        LifeInsured_Title:
+                          type: string
+                          example: null
+                        LifeInsured_FName:
+                          type: string
+                          example: null
+                        LifeInsured_MName:
+                          type: string
+                          example: null
+                        LifeInsured_LName:
+                          type: string
+                          example: null
+                        LifeInsured_DOB:
+                          type: string
+                          example: null
+                        LifeInsured_RelationProposer:
+                          type: string
+                          example: null
+                        Proposer_Title:
+                          type: string
+                          example: null
+                        Proposer_FName:
+                          type: string
+                          example: null
+                          description: First name of Proposer
+                        Proposer_MName:
+                          type: string
+                          example: null
+                          description: Middle name of Proposer
+                        Proposer_LName:
+                          type: string
+                          example: null
+                          description: Last name of Proposer
+                        Proposer_DOB:
+                          type: string
+                          format: date
+                          example: null
+                          description: DOB of Proposer
+                        Proposer_Email:
+                          type: string
+                          example: null
+                          description: Email of proposer
+                        Proposer_Mobile:
+                          type: number
+                          example: '0'
+                          description: Mobile number of Proposer
+                        Proposer_TelephoneNo:
+                          type: number
+                          example: '0'
+                          description: Telephone number
+                        Proposer_Gender:
+                          type: string
+                          example: null
+                          description: Gender of Proposer
+                        Proposer_AnnualIncome:
+                          type: number
+                          format: double
+                          example: '0.0'
+                          description: income of proposer annually
+                        IsPolicy_SelfProposed:
+                          type: boolean
+                          example: false
+                          description: Is the policy self proposed  
+                        RefferedBy:
+                          type: string
+                          example: null
+                          description: Policy referred by whom    
+                        DMSCode:
+                          type: string
+                          example: null
+                          description: DMS code  
+                        PolicyHolder_Name:
+                          type: string
+                          example: null
+                          description: Name of policy holder
+                        PolicyHolder_SpouseName:
+                          type: string
+                          example: null
+                          description: Spouse name of holder
+                        Invest_Value:
+                          type: number
+                          format: double
+                          example: '0.0'
+                          description: amount to invest    
+                        Invest_Type:
+                          type: string
+                          example: null
+                          description: type of investment
+                        TotalBenefitDeath:
+                          type: number
+                          format: double
+                          example: '0'
+                          description: benefit provided after death
+                        ServiceTaxRs:
+                          type: number
+                          format: double
+                          example: '735.5658600000000'
+                          description: Service Tax in rupees
+                        EducationCessTaxRs:
+                          type: number
+                          format: double
+                          example: '0.0'
+                          description: Education tax
+                        FundAllocation_Accelerator_Fund:
+                          type: integer
+                          example: '0'
+                          description: allocated fund   
+                        FundAllocation_Stable_Fund:
+                          type: integer
+                          example: '0'
+                          description:  stable fund
+                        Portfolio_Strategy:
+                          type: string
+                          example: null
+                          description:  strategy used
+                        PolicyDecision:
+                          type: string
+                          example: null
+                        Aegon_Employee:
+                          type: boolean
+                          example: false
+                        Lumpsum_Benefit:
+                          type: string
+                          example: null
+                        Income_Benefit:
+                          type: string
+                          example: null
+                        Lumpsum_Benefit_Assured:
+                          type: string
+                          example: null
+                        Income_Benefit_Assured:
+                          type: string
+                          example: null
+                        Regular_Type:
+                          type: string
+                          example: monthly
+                        IsnewIterm:
+                          type: boolean
+                          example: false
+                        FundAllocation_Opportunity_Fund:
+                          type: integer
+                          example: '0'
+                        kyp_serviceTax:
+                          type: string
+                          example: '735.5658600000000' 
+                        kyp_kkcsbTax:
+                          type: string
+                          example: null
+                        AnnualizedPremium:
+                          type: string
+                          example: null
+                          description: abc
+                        InstallmentPremium:
+                          type: string
+                          example: null
+                          description: abc 
+                        BaseServiceTax:
+                          type: string
+                          example: null
+                          description: ee
+                        QuoteSeries:
+                          type: string
+                          example: null
+                          description: yh
+                        LifeInsured_Gender:
+                          type: string
+                          example: null
+                          description: fd
+                    QuoteId:
+                      type: string
+                      example: null
+                      description: dfx
+                    IsStp:
+                      type: boolean
+                      example: false
+                      description: fd
+                  
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+ 
+  
+  
+ 
